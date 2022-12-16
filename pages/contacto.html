@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Compra tus juegos favoritos aquí">
+    <meta name="keywords" content="Juegos E9 Games">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/estilos.css">
+    <link rel="stylesheet" href="/css/contacto.css">
+    <title>E9Games</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bgNavbar">
+        <div class="container-fluid">
+            <a class="navbar-brand imageContainer" href="#">
+                <img src="/img/19940211.jpg" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav navHover">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Registrate</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sobre Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contactanos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="contactForm">
+        <h2>Para contactarnos rellene los siguientes campos</h2>
+    </div>
+    <form action="https://formsubmit.co/leo.jz.dev@gmail.com" method="POST" class="container center">
+        <div class="formTitle">
+            <h2 class="mt-2">Contactanos</h2>
+            <hr>
+        </div>
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Ingrese su nombre completo</label>
+            <input type="text" class="form-control isVa" id="nombre" name="nombre completo" minlength="4" maxlength="20" placeholder="Nombre completo" required>
+            <div class="invalid-feedback">
+                Es necesario poner su nombre completo
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Escriba su email aquí</label>
+            <input class="form-control" id="email" name="email" minlength="10" maxlength="300" rows="3" placeholder="Email" required></input>
+            <div class="invalid-feedback">
+                Introduzca un email valido
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="mensaje" class="form-label">Escriba su mensaje aquí</label>
+            <textarea class="form-control" id="mensaje" name="mensaje" minlength="10" maxlength="300" rows="3" placeholder="Escriba aquí" required></textarea>
+            <div class="invalid-feedback">
+                Es necesario un minimo de 10 caracteres
+            </div>
+        </div>
+        <input class="btn btn-dark" type="submit" value="Submit">
+    </form>
+
+
+
+
+
+
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/contacto.js"></script>
+</body>
+
+</html>
