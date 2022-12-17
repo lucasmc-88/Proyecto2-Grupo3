@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/estilos.css">
-    <link rel="stylesheet" href="../css/contacto.css">
+    <link rel="stylesheet" href="../css/admin.css">
     <title>E9Games</title>
 </head>
 
@@ -41,41 +41,117 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contactanos</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="admin.html">Admin</a>
+                    </li>
+                    <li class="nav-item">
+
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="contactForm">
-        <h2>Para contactarnos rellene los siguientes campos</h2>
-    </div>
-    <form action="https://formsubmit.co/leo.jz.dev@gmail.com" method="POST" class="container center">
-        <div class="formTitle">
-            <h2 class="mt-2">Contactanos</h2>
+    <main class="container my-5">
+
+        <!-- PAGINA DE ADMINISTRACION -->
+        <section>
+            <h1 class="display-3 text-center">Administrador de juegos</h1>
+            <hr />
+            <form id="formJuego">
+
+
+                <!-- MODAL -->
+                <!-- Button trigger modal -->
+                <div class="modal fade text-dark" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">Formulario del juego</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="d-flex flex-column">
+                                    <div class="mb-3">
+                                        <label for="codigo" class="form-label">Código</label>
+                                        <input type="text" class="form-control" id="codigo" placeholder="1234add"
+                                            maxlength="10" minlength="1" required />
+                                        <div class="invalid-feedback">
+                                            Debe ingresar un código alfanumerico
+                                        </div>
+                                    </div> <br>
+                                    <div class="mb-3">
+                                        <label for="juegos" class="form-label">Nombre del juego</label>
+                                        <input type="text" class="form-control" id="nomJuego"
+                                            placeholder="Escribir nombre" maxlength="20" required />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="categoria" class="form-label">Categoria</label>
+                                        <input type="text" class="form-control" id="categoria"
+                                            placeholder="Escribir Categoria" maxlength="20" required />
+                                    </div> <br>
+                                    <div class="mb-3">
+                                        <label for="descripcion" class="form-label">Descripcion</label>
+                                        <textarea class="form-control" id="descripcion" rows="3"></textarea>
+                                    </div> <br>
+                                    <div class="mb-3">
+                                        <label for="URL" class="form-label">Publicado</label>
+                                        <input type="text" class="form-control" id="publicado"
+                                            placeholder="http://imagen.com" maxlength="200" required />
+                                    </div> <br>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Guardar</button>
+                                <button type="button" class="btn btn-primary">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- <button class="btn btn-primary" type="submit">Guardar</button> -->
+            </form>
+            <div class="alert alert-danger my-3 d-none" role="alert" id="mjeAlerta">
+                Debe completar todos los campos rqueridos
+            </div>
+        </section>
+        <!-- TABLA DE Juegos -->
+        <section>
+            <h2 class="display-3 text-center">
+                Tabla de Juegos
+            </h2>
             <hr>
-        </div>
-        <div class="mb-3">
-            <label for="nombre" class="form-label">Ingrese su nombre completo</label>
-            <input type="text" class="form-control isVa" id="nombre" name="nombre completo" minlength="4" maxlength="20" placeholder="Nombre completo" required>
-            <div class="invalid-feedback">
-                Es necesario poner su nombre completo
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop">
+                    Agregar Juego
+                </button>
+            <button class="btn btn-secondary" id="btnDatosPrueba">
+                Cargar Datos de prueba
+            </button>
+            <div class="table-responsive">
+                <table class="table my-5 text-light">
+                    <thead>
+                        <tr>
+                            <th scope="col">Cod.</th>
+                            <th scope="col">Juego</th>
+                            <th scope="col">Categoria</th>
+                            <th scope="col">Descripcion</th>
+                            <th scope="col">Publicado</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaJuego">
+
+                    </tbody>
+                </table>
             </div>
-        </div>
-        <div class="mb-3">
-            <label for="email" class="form-label">Escriba su email aquí</label>
-            <input class="form-control" id="email" name="email" minlength="10" maxlength="300" rows="3" placeholder="Email" required></input>
-            <div class="invalid-feedback">
-                Introduzca un email valido
-            </div>
-        </div>
-        <div class="mb-3">
-            <label for="mensaje" class="form-label">Escriba su mensaje aquí</label>
-            <textarea class="form-control" id="mensaje" name="mensaje" minlength="10" maxlength="300" rows="3" placeholder="Escriba aquí" required></textarea>
-            <div class="invalid-feedback">
-                Es necesario un minimo de 10 caracteres
-            </div>
-        </div>
-        <input class="btn btn-dark" type="submit" value="Submit">
-    </form>
+        </section>
+    </main>
+    <!-- FOOTER -->
     <footer class="bg-dark text-white pt-5 pb-4">
         <div class="container text-center text-md-left">
             <div class="row text-center text-md-left">
@@ -169,7 +245,7 @@
         </div>
     </footer>
     <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/contacto.js"></script>
+    <script src="../js/admin.js" type="module"></script>
 </body>
 
 </html>
