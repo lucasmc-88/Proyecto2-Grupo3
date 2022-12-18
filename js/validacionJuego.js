@@ -41,7 +41,7 @@ export const campoRequerido = (input) => {
   };
   
    export const validacionGeneral = (
-    campoCodigo,
+    //campoCodigo,
     campoJuego,
     campoDescripcion,
     campoCategoria,
@@ -52,10 +52,9 @@ export const campoRequerido = (input) => {
     //console.log(e);
     let alerta = document.querySelector("#mjeAlerta");
     if (
-      campoRequerido(campoCodigo) &&
       campoRequerido(campoJuego) &&
       campoRequerido(campoDescripcion) &&
-      validarNumero(campoCategoria) &&
+      campoRequerido(campoCategoria) &&
       validarURL(campoPublicado)
     ) {
       console.log("validación correcta los datos están listo para ser enviados");

@@ -13,16 +13,14 @@ let formularioJuego = document.querySelector('#formJuego');
 
 let juegoExistente = false; // variable bandera
 
-// si hay juegos en local storage, quiero que se guarden en el array los juegos
 let listaJuegos = JSON.parse(localStorage.getItem("arrayJuegoKey")) || [];
 
 
 
-// asociar un evento a cada elemento
 
-campoCodigo.addEventListener("blur", () => {
+/*campoCodigo.addEventListener("blur", () => {
   campoRequerido(campoCodigo);
-});
+});*/
 
 campoJuego.addEventListener("blur", () => {
   campoRequerido(campoJuego);
@@ -33,7 +31,6 @@ campoDescripcion.addEventListener("blur", () => {
 });
 
 campoCategoria.addEventListener("blur", () => {
-  console.log("desde cantidad");
   campoRequerido(campoCategoria);
 });
 
@@ -56,7 +53,7 @@ function guardarjuego(e) {
   //verificar que todos los datos sean validos
   if (
     validacionGeneral(
-      campoCodigo,
+      //campoCodigo,
       campoJuego,
       campoDescripcion,
       campoCategoria,
@@ -69,16 +66,17 @@ function guardarjuego(e) {
       crearJuego();
     } else {
       //modificar juego
-     modificarjuego();
+     modificarJuego();
     }
   }
 }
 
 function crearJuego(){
-  // generar una funcion crearCodigUnico() que retorne codigo unico
+  // codigo unico
+  let codigoUnico = Math.floor(Math.random()*100);
   // crear objeto Juego 
   let juegoNuevo = new Juego(
-    campoCodigo.value, 
+    codigoUnico, 
     campoJuego.value,
     campoCategoria.value,  
     campoDescripcion.value, 
@@ -87,16 +85,18 @@ function crearJuego(){
     console.log(juegoNuevo);
     listaJuegos.push(juegoNuevo);
     console.log(listaJuegos);
-    // limpiar formulario
     limpiarFormulario();
-    // guardar el array en local storage
     guardarLocalSorage();
-    //cargar los juegos
+    Swal.fire(
+      'Juego creado!!',
+      'su juego se cargo correctamente!',
+      'success'
+    )
     crearFila(juegoNuevo);
 }
 
 function limpiarFormulario() {
-  //limpiamos los value del formulario
+  //limpio formulario
   formularioJuego.reset();
   //resetear las clases de los input
   campoCodigo.className = "form-control";
@@ -105,7 +105,6 @@ function limpiarFormulario() {
   campoCategoria.className = "form-control";
   campoPublicado.className = "form-control";
 
-  //resetear la variable bandera o booleana para el caso de modificarjuego
   juegoExistente = false;
 }
 
@@ -122,8 +121,8 @@ function crearFila(juego){
   <td>${juego.descripcion}</td>
   <td>${juego.publicado}</td>
   <td>
-    <button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
-    <button class="btn btn-danger"><i class="bi bi-trash3"></i></button>
+    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="preEdicionJuego('${juego.codigo}')"><i class="bi bi-pencil-square"></i></button>
+    <button class="btn btn-danger" onclick="borrarJuego('${juego.codigo}')"><i class="bi bi-trash3"></i></button>
   </td>
 </tr>`
 
@@ -131,7 +130,71 @@ function crearFila(juego){
 
 function cargaInicial(){
   if (listaJuegos.length > 0) {
-    //crear fila
     listaJuegos.forEach(itemJuego => { crearFila(itemJuego);});
   } 
+}
+
+window.preEdicionJuego = function (codigo) {
+  console.log("desde editar");
+  console.log(codigo);
+  //buscar el producto en el array
+  let juegoBuscado = listaJuegos.find((itemJuego) => {
+    return itemJuego.codigo === parseInt(codigo);
+  });
+
+  campoCodigo.value = juegoBuscado.codigo;
+  campoJuego.value = juegoBuscado.producto;
+  campoDescripcion.value = juegoBuscado.descripcion;
+  campoCategoria.value = juegoBuscado.categoria;
+  campoPublicado.value = juegoBuscado.publicado;
+
+  //cambiar la variable bandera productoExistente
+  juegoExistente = true;
+};
+
+
+function modificarJuego() {
+  console.log("desde modificar producto");
+  Swal.fire({
+    title: "¿Seguro qué desea modificar este Juego?",
+    text: "Esta acción no podra ser revertida!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Confirmar!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      //encontrar la posicion del elemento que quiero modificar dentro del array de productos
+      let indiceJuego = listaJuegos.findIndex((itemJuego) => {
+        return itemJuego.codigo === parseInt(campoCodigo.value);
+      });
+
+      console.log(indiceJuego);
+      //modificar los valores dentro del elemento del array de productos
+      listaJuegos[indiceJuego].juego = campoJuego.value;
+      listaJuegos[indiceJuego].descripcion = campoDescripcion.value;
+      listaJuegos[indiceJuego].categoria = campoCategoria.value;
+      listaJuegos[indiceJuego].publicado = campoPublicado.value;
+
+      //actualizar el localStorage
+      guardarLocalSorage();
+      //actualizar la tabla
+      borrarTabla();
+      cargaInicial();
+      //mostrar cartel al usuario
+      Swal.fire(
+        "Juego modificado!",
+        "Su Juego fue modificado correctamente",
+        "success"
+      );
+      //limpiar el formulario
+      limpiarFormulario();
+    }
+  });
+}
+
+function borrarTabla() {
+  let tablaJuegos = document.querySelector("#tablaJuego");
+  tablaJuegos.innerHTML = "";
 }
