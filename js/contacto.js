@@ -14,7 +14,7 @@ mensaje.addEventListener("blur", () => {
 })
 
 const campoNombre = (input) => {
-    if (input.value.trim().length > 0) {
+    if (input.value.trim().length > 4) {
         input.className = "form-control is-valid";
         return true;
       } else {

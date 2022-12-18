@@ -10,12 +10,6 @@ body{
     color: white;
     background: linear-gradient(90deg, rgba(18,18,19,1) 0%, rgba(19,24,18,1) 36%, rgba(25,29,25,1) 69%, rgba(52,58,59,1) 100%);
 }
-.section{
-    height: 100%;
-    width: 100%;
-    min-height: 100vh;
-    position: relative;
-}
 .bgNavbar{
     background: transparent;
 }
