@@ -31,7 +31,11 @@
                             <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="pages/404.html">Login</a>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-outline-light btnSus" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop">
+                                Login
+                            </button>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="pages/404.html">Registrate</a>
@@ -49,17 +53,43 @@
                 </div>
             </div>
         </nav>
+
+
     </header>
     <main class="container">
+                        <!-- MODAL usuario login --> 
+                        <div class="modal fade text-dark" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Login</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="d-flex flex-column">
+                                        <label for="idUsuario">Ingrese su usuario</label>
+                                        <input type="text" name="" id="idUsuario" required> <br>
+                                        <label for="idPass">Ingrese su contraseña</label>
+                                        <input type="text" id="idPass" name="" pattern="[A-Za-z]"
+                                            title="Ingrese su nombre correcto">
+                                    </form>
+                                </div>
+                                <div class="modal-footer" id="logueo">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
         <section class="my-5">
-          <h1 class="display-3 text-center text-primary">
-            Catálogo de productos
-          </h1>
-          <hr>
-          <article class="row" id="grilla">
-          </article>
+            <h1 class="display-3 text-center text-primary">
+                Catálogo de Juegos
+            </h1>
+            <hr>
+            <article class="row" id="grilla">
+            </article>
         </section>
-      </main>
+    </main>
     <footer class="bg-dark text-white pt-5 pb-4 align-content-end">
         <div class="container text-center text-md-left">
             <div class="row text-center text-md-left">

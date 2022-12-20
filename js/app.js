@@ -3,7 +3,7 @@
 let listaJuegos = JSON.parse(localStorage.getItem("arrayJuegoKey")) || [];
 
 listaJuegos.map((item) => {crearColumna(item)});
-//listaProductos.forEach((item) => {crearColumna(item)});
+//listaJuegos.forEach((item) => {crearColumna(item)});
 
 function crearColumna(juego) {
   let grilla = document.getElementById('grilla');
