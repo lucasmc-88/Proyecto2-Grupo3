@@ -122,7 +122,7 @@ function crearFila(juego){
   <td>${juego.publicado}</td>
   <td>
     <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="preEdicionJuego('${juego.codigo}')"><i class="bi bi-pencil-square"></i></button>
-    <button class="btn btn-danger" onclick="borrarJuego('${juego.codigo}')"><i class="bi bi-trash3"></i></button>
+    <button type="button" class="btn btn-danger" onclick="borrarJuego('${juego.codigo}')"><i class="bi bi-trash3"></i></button>
   </td>
 </tr>`
 
@@ -135,7 +135,6 @@ function cargaInicial(){
 }
 
 window.preEdicionJuego = function (codigo) {
-  console.log("desde editar");
   console.log(codigo);
   //buscar el producto en el array
   let juegoBuscado = listaJuegos.find((itemJuego) => {
@@ -143,7 +142,7 @@ window.preEdicionJuego = function (codigo) {
   });
 
   campoCodigo.value = juegoBuscado.codigo;
-  campoJuego.value = juegoBuscado.producto;
+  campoJuego.value = juegoBuscado.juego;
   campoDescripcion.value = juegoBuscado.descripcion;
   campoCategoria.value = juegoBuscado.categoria;
   campoPublicado.value = juegoBuscado.publicado;
@@ -198,3 +197,39 @@ function borrarTabla() {
   let tablaJuegos = document.querySelector("#tablaJuego");
   tablaJuegos.innerHTML = "";
 }
+
+window.borrarJuego = function (codigo) {
+  console.log("desde borrar juego");
+  console.log(codigo);
+  Swal.fire({
+    title: "¿Seguro qué desea borrar este juego?",
+    text: "Esta acción no podra ser revertida!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Confirmar!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      //encontrar la posicion del elemento en el array y borrarlo
+      //opcion 1 encontrar el indice con findIndex y usar splice(indice,1);
+      //opcion 2 usando filter
+      let nuevaListaJuegos = listaJuegos.filter((itemJuego) => {
+        return itemJuego.codigo !== parseInt(codigo);
+      });
+      //actualizar el arreglo original y el localStorage
+      listaJuegos = nuevaListaJuegos;
+      guardarLocalSorage();
+      //actualizar la tabla
+      borrarTabla();
+      cargaInicial();
+
+      //mostrar cartel al usuario
+      Swal.fire(
+        "Juego eliminado!",
+        "Su juego fue eliminado correctamente",
+        "success"
+      );
+    }
+  });
+};
