@@ -1,0 +1,338 @@
+section{
+    padding: 4rem 0 3rem;
+}
+.inicio{
+    position: relative;
+    min-height: 540px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 2rem;
+    margin: 0 auto;
+}
+.inicio img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1.4rem;
+    z-index: -1;
+}
+.textoInicio{
+    position: absolute;
+    padding-right: 4rem;
+    text-align: center;
+    top: 22rem;
+    right: 1.3rem;
+}
+.textoInicio h1{
+    font-size: 2.4rem;
+    letter-spacing: 0.5rem;
+    color: hsl(0, 0%, 91%);
+    margin-bottom: 2rem;
+}
+.btnJuego{
+    text-decoration: none;
+    padding: 15px 20px;
+    background-color: #0d8401;
+    color: hsl(0, 0%, 91%);
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    font-weight: 500;
+    clip-path: polygon(17% 0, 100% 0, 100% 45%, 80% 100%, 0 100%, 0 45%);
+}
+.btnJuego:hover{ 
+    background: #322f40;
+    transition: .3s all linear;
+    color: hsl(0, 0%, 91%);
+}
+.contenedorTendencias{
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+    margin-bottom: 2rem;
+}
+.contenedorTendencias .bx{
+    margin-bottom: 0.5rem;
+    font-size: 21px;
+    color: hsl(0, 0%, 91%);
+    padding: 10px;
+    border-radius: 5rem;
+    background-color: #0d8401;
+}
+.contenedorTendencias h2{
+    font-size: 1.7rem;
+    font-weight: 500;
+    border-bottom: 4px solid hsl(0, 0%, 91%);
+    border-radius: 0.2rem;
+}
+.btnVerMas{
+    padding: 10px 0;
+    text-align: center;
+    margin-top: 0.5rem;
+    background-color: hsl(0, 15%, 100%, 0.4);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-weight: 500;
+    width: 120px;
+    border-radius: 0.5rem;
+    transition: .3s all linear;
+}
+.btnVerMas a{
+    text-decoration: none;
+    color: hsl(0, 0%, 91%);
+}
+.btnVerMas:hover{
+    border-radius: 0.5rem;
+    background: hsl(0, 0%, 10%, 0.8);
+    color: hsl(0, 0%, 91%);
+    cursor: pointer;
+}
+.caja{
+    position: relative;
+    width: 100%;
+    height: 420px;
+    border-radius: 0.5rem;
+}
+.caja img{
+    height: 100%;
+    width: 100%;
+    border-radius: 0.5rem;
+    object-fit: cover;
+}
+.caja .cajaTexto{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 10px;
+    background: hsl(227, 14%, 20%, 0.8);
+    backdrop-filter: blur(4px);
+    border-radius: 0.5rem;
+}
+.caja .cajaTexto h2{
+    font-size: 1rem;
+    font-weight: 500;
+}
+.caja .cajaTexto h3{
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin-bottom: 0.8rem;
+}
+.estrellas{
+    text-align: center;
+    width: 20%;
+    color: hsl(0, 0%, 91%);
+    background-color: hsl(0, 0%, 25%, 0.4);
+    border-radius: 0.5rem;
+}
+.estrellas span{
+    font-weight: 600;
+    color: #ffc107;
+}
+.estrellas .bx{
+    color: #ffc107;
+    font-size: 1rem;
+}
+.tituloCategoria{
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+    margin-bottom: 2rem;
+}
+.tituloCategoria .bx{
+    margin-bottom: 0.5rem;
+    font-size: 25px;
+    color: hsl(0, 0%, 91%);
+    padding: 10px;
+    border-radius: 5rem;
+    background-color: #0d8401;
+}
+.tituloCategoria h1{
+    border-bottom: 5px solid hsl(0, 0%, 91%);
+    padding-bottom: 0.2rem;
+    border-radius: 0.3rem;
+}
+.contenedorCategoria{
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+    margin-bottom: 2rem;
+}
+.contenedorCategoria .bx{
+    margin-bottom: 0.5rem;
+    font-size: 25px;
+    color: hsl(0, 0%, 91%);
+    padding: 10px;
+    border-radius: 5rem;
+    background-color: #0d8401;
+}
+.contenedorCategoria h2{
+    border-bottom: 4px solid hsl(0, 0%, 91%);
+    padding-bottom: 0.2rem;
+    border-radius: 0.2rem;
+}
+.categoriaAccion{
+    margin-bottom: 2rem;
+}
+@media screen and (min-width:280px) and (max-width:576px){
+    .caja{
+        width: 250px;
+        margin: 0 auto;
+    }
+    .contenedorTendencias{
+        margin-top: 2.5rem;
+    }
+    .contenedorCategoria{
+        margin-left: 1rem;
+    }
+    .tituloCategoria{
+        margin-left: 0.5rem;
+    }
+    .inicio{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 180px;
+        margin-top: 2rem;
+    }
+    .inicio img{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 1.4rem;
+        z-index: -1;
+    }
+    .textoInicio{
+        display: none;
+    }
+    .btnResponsive{
+        position: absolute;
+        top: 11.5rem;
+        display: block !important;
+        width: 100px;
+        height: 50px;
+        text-decoration: none;
+        padding: 15px 0px;
+        text-align: center;
+        background-color: #0d8401;
+        color: hsl(0, 0%, 91%);
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        margin-top: 2rem;
+        border-radius: 2rem;
+    }
+    .btnResponsive:hover{
+        background: #322f40;
+        transition: .3s all linear;
+        color: hsl(0, 0%, 91%);
+    }
+}
+@media screen and (min-width:576px) and (max-width:768px){
+    .inicio{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 280px;
+        margin-top: 2rem;
+    }
+    .inicio img{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 1.4rem;
+        z-index: -1;
+    }
+    .contenedorTendencias{
+        margin-top: 3rem;
+    }
+    .textoInicio{
+        display: none;
+    }
+    .btnResponsive{
+        position: absolute;
+        top: 18rem;
+        display: block !important;
+        width: 100px;
+        height: 50px;
+        text-decoration: none;
+        padding: 15px 0px;
+        text-align: center;
+        background-color: #0d8401;
+        color: hsl(0, 0%, 91%);
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        margin-top: 2rem;
+        border-radius: 2rem;
+    }
+    .btnResponsive:hover{
+        background: #322f40;
+        transition: .3s all linear;
+        color: hsl(0, 0%, 91%);
+    }
+}
+@media screen and (min-width:768px) and (max-width:992px) {
+    .inicio{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 480px;
+        width: 990px;
+        margin-top: 2rem;
+    }
+    .inicio img{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 1.4rem;
+        z-index: -1;
+    }
+    .textoInicio{
+        display: none;
+    }
+    .btnResponsive{
+        position: absolute;
+        top: 18rem;
+        left: 70%;
+        display: block !important;
+        width: 100px;
+        height: 50px;
+        text-decoration: none;
+        padding: 15px 0px;
+        text-align: center;
+        background-color: #0d8401;
+        color: hsl(0, 0%, 91%);
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        margin-top: 2rem;
+        border-radius: 2rem;
+    }
+    .btnResponsive:hover{
+        background: #322f40;
+        transition: .3s all linear;
+        color: hsl(0, 0%, 91%);
+    }
+}
+@media screen and (min-width:992px) and (max-width:1200px){
+    .textoInicio{
+        position: absolute;
+        padding-right: 0.5rem;
+        text-align: center;
+        top: 22rem;
+    }
+}
+@media screen and (min-width:1200px) and (max-width:1400px){
+    .textoInicio{
+        position: absolute;
+        padding-right: 2.5rem;
+        text-align: center;
+        top: 22rem;
+    }
+}
