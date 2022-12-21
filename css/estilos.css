@@ -8,106 +8,32 @@
 body{
     overflow-x: hidden;
     color: white;
+    background: linear-gradient(90deg, rgba(18,18,19,1) 0%, rgba(19,24,18,1) 36%, rgba(25,29,25,1) 69%, rgba(52,58,59,1) 100%);
 }
-.section{
-    height: 100%;
-    width: 100%;
-    min-height: 100vh;
-    position: relative;
+.bgNavbar{
+    background: transparent;
 }
-.container .navbar-brand{
-    display: block;
-    font-size: 26px;
-    font-weight: 600;
+.navbarCenter {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
 }
-.navLinks{     
-    display: flex;
-    align-items: center;
-    justify-content: space-between;   
-    padding: 40px 0 30px;
-    list-style: none;
+.imageContainer img{
+    width: 40px;
+    height: 40px;
 }
-.navLinks li a{
-    text-decoration: none;
-    display: inline-block;
-    margin-left: 40px;
+.navHover li a{
     color: white;
-    font-weight: 600;
-    font-size: 15px;
-    border-bottom: 2px solid transparent;
-    transition: .4s;
-} 
-.gameText{
-    text-decoration: none;
-    display: inline-block;
-    margin-right: 60px;
-    color: white;
-    font-weight: 600;
-    font-size: 26px;
-    border-bottom: 2px solid transparent;
-    transition:.4s;
+    border-bottom: 4px solid transparent;
+    transform: .5s;
 }
-.gameText:hover{
-    color: white;
-    border-bottom: 2px solid white;
-    border-radius: 7px;
-}
-.image{
-    display: flex;
-    bottom: 1rem;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border-image: none;
-}
-.navLinks li a:hover,
-.navLinks li a:focus{
-    border-bottom: 2px solid white;
-    border-radius: 7px;
-}
-.navLinks li .active{
-    border-bottom: 2px solid white;
+.navHover li a:hover{
+    border-bottom: 4px solid white;
     border-radius: 5px;
 }
-.mainText{
+
+.paddingno {
+    margin: 0;
+    padding: 0;
     width: 100%;
-    height: 100vh;
-    padding-top: 100px;
-    margin-left: 20px;
-    position: relative;
-    z-index: 2;
-    margin: 50px;
-
-}
-.mainText h5{
-    font-size: 14px;
-    font-weight: 400;
-    margin-bottom: 40px;
-}
-.mainText h1{
-    font-size: 70px;
-    line-height: 1;
-    margin: 0 0 45px;
-}
-.mainText h3{
-    font-size: 20px;
-    font-weight: 400;
-
-}
-.mainText p{
-    max-width: 100%;
-    width: 480px;
-    line-height: 1.4;
-    margin-bottom: 50px;
-}
-.gameImage{
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    text-align: right;
-}
-.gameImage img{
-    width: 100vw;
-    height: 100vh;
-    margin-bottom: 60px;
 }

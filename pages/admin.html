@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Compra tus juegos favoritos aquí">
+    <meta name="keywords" content="Juegos E9 Games">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <title>E9Games</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bgNavbar">
+        <div class="container-fluid">
+            <a class="navbar-brand imageContainer" href="#">
+                <img src="../img/19940211.jpg" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav navHover">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="../index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item d-nona">
+                        <!-- Button trigger modal -->
+                        <a class="nav-link" href="#">Registrate</a>
+                    </li>
+                    <li class="nav-item d-none">
+                        <a class="nav-link" href="#">Registrate</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sobre Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contactanos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="admin.html">Admin</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="container my-5">
+
+
+        <!-- PAGINA DE ADMINISTRACION -->
+        <section>
+            <h1 class="display-3 text-center">Administrador de juegos</h1>
+            <hr />
+            <form id="formJuego">
+                <!-- MODAL -->
+                <!-- Button trigger modal -->
+                <div class="modal fade text-dark" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">Formulario del juego</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="d-flex flex-column">
+                                    <div class="mb-3">
+                                        <label for="codigo" class="form-label">Código</label>
+                                        <input type="text" class="form-control" id="codigo" placeholder="1234add"
+                                            maxlength="10" minlength="1" disabled />
+                                    </div> <br>
+                                    <div class="mb-3">
+                                        <label for="juegos" class="form-label">Nombre del juego</label>
+                                        <input type="text" class="form-control" id="nomJuego"
+                                            placeholder="Escribir nombre" maxlength="20" required />
+                                    </div>
+                                    <div class="mb-3">
+                                            <select class="form-select my-3" aria-label="Default select example" id="categoria">
+                                                <option selected="">Categoria</option>
+                                                <option value="Acción">Acción</option>
+                                                <option value="Deportes">Deportes</option>
+                                                <option value="Estrategia">Estrategia</option>
+                                                <option value="Niños">Niños</option>
+                                            </select>
+                                    </div> <br>
+                                    
+                                    <div class="mb-3">
+                                        <label for="descripcion" class="form-label">Descripcion</label>
+                                        <textarea class="form-control" id="descripcion" rows="3"></textarea>
+                                    </div> <br>
+                                    <div class="mb-3">
+                                        <label for="URL" class="form-label">URL</label>
+                                        <input type="text" class="form-control" id="url"
+                                            placeholder="http://imagen.com" maxlength="200" required />
+                                    </div> <br>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="No Publicado" id="publicado">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                          Publicado
+                                        </label>
+                                      </div><br>
+                                    <div class="mb-3">
+                                        <label for="imgPri" class="form-label">Imagen principal</label>
+                                        <input type="text" class="form-control" id="imgPri"
+                                            placeholder="http://imagen.com" maxlength="100" required />
+                                    </div> <br>
+                                    <div class="mb-3">
+                                        <label for="imgeSec" class="form-label">Imagen secundaria</label>
+                                        <input type="text" class="form-control" id="imgSec"
+                                            placeholder="http://imagen.com" maxlength="100" required />
+                                    </div> <br>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Guardar</button>
+                                <button type="reset" class="btn btn-primary" data-bs-dismiss="modal"
+                                    id="btnCerra">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- <button class="btn btn-primary" type="submit">Guardar</button> -->
+            </form>
+            <div class="alert alert-danger my-3 d-none" role="alert" id="mjeAlerta">
+                Debe completar todos los campos
+            </div>
+        </section>
+        <!-- TABLA DE Juegos -->
+        <section>
+            <h2 class="display-3 text-center">
+                Tabla de Juegos
+            </h2>
+            <hr>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Agregar Juego
+            </button>
+            <div class="table-responsive">
+                <table class="table my-5 text-light">
+                    <thead>
+                        <tr>
+                            <th scope="col">Cod.</th>
+                            <th scope="col">Juego</th>
+                            <th scope="col">Categoria</th>
+                            <th scope="col">Descripcion</th>
+                            <th scope="col">URL</th>
+                            <th scope="col">Publicado</th>
+                            <th scope="col">Imagen 1</th>
+                            <th scope="col">Imagen</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaJuego">
+
+                    </tbody>
+                </table>
+            </div>
+        </section>
+                <!-- PAGINA DE ADMINISTRACION usuario-->
+                <section>
+                    <h1 class="display-3 text-center">Administrador de Usuario</h1>
+                    <hr />
+                    <form id="formUsuario">
+                        
+                        <div class="modal fade text-dark" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Formulario del Usuario</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="codUs" class="form-label">Código</label>
+                                        <input type="text" class="form-control" id="codUs" placeholder="1234add"
+                                            maxlength="10" minlength="1" disabled />
+                                    </div> <br>
+                                    <div class="mb-3">
+                                        <label for="tablaUsuario" class="form-label">Ingrese usuario</label>
+                                        <input type="text" class="form-control" id="usuario"
+                                            placeholder="Escribir usuario" maxlength="20" required />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="contraseña" class="form-label">Contraseña</label>
+                                        <input type="text" class="form-control" id="pass"
+                                            placeholder="Escribir contraseña" maxlength="20" required />
+                                    </div> <br>
+                                    <div class="mb-3">
+                                        <!-- <label for="admin" class="form-label">Administrador</label>
+                                        <input type="text" class="form-control" id="admin" 
+                                        placeholder="Escribir contraseña" maxlength="20" required /> -->
+                                        <div class="mb-3">
+                                                <select class="form-select my-3" aria-label="Default select example" id="admin">
+                                                    <option selected="">Estado</option>
+                                                    <option value="Admin">Admin</option>
+                                                    <option value="Cliente">Cliente</option>
+                                                </select>
+                                        </div> <br>
+                                    </div> <br>
+                                </form>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Guardar</button>
+                                <button type="reset" class="btn btn-primary" data-bs-dismiss="modal"
+                                    id="btnCerra">Cerrar</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                    <div class="alert alert-danger my-3 d-none" role="alert" id="mjeAlerta">
+                        Debe completar todos los campos
+                    </div>
+                </section>
+        <section>
+            <h2 class="display-3 text-center">
+                Tabla de usuarios
+            </h2>
+            <hr>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Agregar usuarios</button>
+            <div class="table-responsive">
+                <table class="table my-5 text-light">
+                    <thead>
+                        <tr>
+                            <th scope="col">Cod.</th>
+                            <th scope="col">Usuario</th>
+                            <th scope="col">contraseña</th>
+                            <th scope="col">Administrador</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaUsuario">
+
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+    <!-- FOOTER -->
+    <footer class="bg-dark text-white pt-5 pb-4">
+        <div class="container text-center text-md-left">
+            <div class="row text-center text-md-left">
+                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 font-weight-bold text-warning"> E9Games </h5>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus, doloribus.</p>
+                </div>
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Categorias</h5>
+                    <p>
+                        <a href="pages/404.html" class="text-white" style="text-decoration: none;">Acción</a>
+                    </p>
+                    <p>
+                        <a href="pages/404.html" class="text-white" style="text-decoration: none;">Deportes</a>
+                    </p>
+                    <p>
+                        <a href="pages/404.html" class="text-white" style="text-decoration: none;">Estrategia</a>
+                    </p>
+                    <p>
+                        <a href="pages/404.html" class="text-white" style="text-decoration: none;">Niños</a>
+                    </p>
+                </div>
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Información</h5>
+                    <p>
+                        <i class="bi bi-house-door mr-3"></i> San Miguel de Tucumán
+                    </p>
+                    <p>
+                        <i class="bi bi-phone mr-3"></i> +54 9 381 555 5555
+                    </p>
+                    <p>
+                        <i class="bi bi-envelope mr-3"></i> E9Games.co@gmail.com
+                    </p>
+                </div>
+
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Redes Sociales</h5>
+                    <div class="row align-items-center">
+                        <div class="col-md-5 col-lg-4">
+                            <div class="text-center text-md-right">
+                                <ul class="list-untyled list-inline">
+                                    <li>
+                                        <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;"> <i
+                                                class="bi bi-facebook"></i></a>
+                                    </li>
+
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-md-5 col-lg-4">
+                            <div class="text-center text-md-right">
+                                <ul class="list-untyled list-inline">
+                                    <li>
+                                        <a href="pages/404.html" class="btn-floating btn-sm text-white"
+                                            style="font-size: 23px;"> <i class="bi bi-twitter"></i></a>
+                                    </li>
+
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-md-5 col-lg-4">
+                            <div class="text-center text-md-right">
+                                <ul class="list-untyled list-inline">
+                                    <li>
+                                        <a href="pages/404.html" class="btn-floating btn-sm text-white"
+                                            style="font-size: 23px;"> <i class="bi bi-instagram"></i></a>
+                                    </li>
+
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <hr class="mb-4 border border-light width:10%">
+        <div class="row align-items-center text-center">
+            <div class="col-md-9 col-lg-12">
+                <p>© Copyright 2022 All Rights Reserved by:
+                    <a href="#" style="text-decoration: none;">
+                        <strong class="text-warning">E9Games</strong>
+                    </a>
+                </p>
+            </div>
+
+        </div>
+    </footer>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/admin.js" type="module"></script>
+    <script src="../js/adminUsuario.js" type="module"></script>
+</body>
+
+</html>

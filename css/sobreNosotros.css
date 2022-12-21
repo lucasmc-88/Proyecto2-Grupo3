@@ -1,0 +1,48 @@
+.sobreNosotros{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+}
+.sobreNosotros .contenido img{
+    height: auto;
+    width: 600px;
+    max-width: 100%;
+    border-radius: 10px;
+}
+.texto{
+    width: 550px;
+    max-width: 100%;
+    padding: 0 10px;
+    margin-top: 10px;
+}
+.contenido{
+    width: 1280px;
+    max-width: 95%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+.texto h1{
+    font-size: 70px;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+}
+.texto h2{
+    font-size: 50px;
+    margin-bottom: 10px;
+    color: #ffcc74;
+}
+.texto h5{
+    border-bottom: 2px solid #fff;
+}
+@media screen and (max-width:1180px){
+    .sobreNosotros{
+        width: 100%;
+        height: auto;
+        padding: 70px 0;
+    }
+}
