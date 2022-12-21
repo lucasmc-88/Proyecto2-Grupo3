@@ -30,14 +30,11 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="../index.html">Inicio</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item d-nona">
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-outline-light btnSus" data-bs-toggle="modal"
-                            data-bs-target="#staticBackdrop">
-                            Login
-                        </button>
+                        <a class="nav-link" href="#">Registrate</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item d-none">
                         <a class="nav-link" href="#">Registrate</a>
                     </li>
                     <li class="nav-item">
@@ -110,12 +107,14 @@
                                         </label>
                                       </div><br>
                                     <div class="mb-3">
-                                        <label for="descripcion" class="form-label">Imagen principal</label>
-                                        <textarea class="form-control" id="descripcion" rows="3"></textarea>
+                                        <label for="imgPri" class="form-label">Imagen principal</label>
+                                        <input type="text" class="form-control" id="imgPri"
+                                            placeholder="http://imagen.com" maxlength="100" required />
                                     </div> <br>
                                     <div class="mb-3">
-                                        <label for="descripcion" class="form-label">Imagen secundaria</label>
-                                        <textarea class="form-control" id="descripcion" rows="3"></textarea>
+                                        <label for="imgeSec" class="form-label">Imagen secundaria</label>
+                                        <input type="text" class="form-control" id="imgSec"
+                                            placeholder="http://imagen.com" maxlength="100" required />
                                     </div> <br>
                                 </form>
                             </div>
@@ -145,9 +144,6 @@
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 Agregar Juego
             </button>
-            <button class="btn btn-secondary" id="btnDatosPrueba">
-                Cargar Datos de prueba
-            </button>
             <div class="table-responsive">
                 <table class="table my-5 text-light">
                     <thead>
@@ -158,6 +154,8 @@
                             <th scope="col">Descripcion</th>
                             <th scope="col">URL</th>
                             <th scope="col">Publicado</th>
+                            <th scope="col">Imagen 1</th>
+                            <th scope="col">Imagen</th>
                             <th scope="col">Acciones</th>
                         </tr>
                     </thead>
@@ -209,11 +207,6 @@
                                                 </select>
                                         </div> <br>
                                     </div> <br>
-                                    <div class="mb-3">
-                                        <label for="estado" class="form-label">Estado</label>
-                                        <input type="text" class="form-control" id="estado"
-                                            placeholder="http://imagen.com" maxlength="200" required />
-                                    </div> <br>
                                 </form>
                               </div>
                               <div class="modal-footer">
@@ -236,9 +229,6 @@
             <hr>
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Agregar usuarios</button>
-            <button class="btn btn-secondary" id="btnDatosPrueba">
-                Cargar Datos de prueba
-            </button>
             <div class="table-responsive">
                 <table class="table my-5 text-light">
                     <thead>

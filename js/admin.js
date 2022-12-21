@@ -10,6 +10,8 @@ let campoCategoria = document.getElementById("categoria");
 let campoURL = document.getElementById("url");
 let campoPublicado = document.getElementById("publicado");
 let valorCampoPublicado = "No Publicado";
+let campoImgpri = document.getElementById("imgPri");
+let campoImgsec = document.getElementById("imgSec");
 let formularioJuego = document.querySelector('#formJuego');
 
 
@@ -18,20 +20,17 @@ let juegoExistente = false; // variable bandera
 let listaJuegos = JSON.parse(localStorage.getItem("arrayJuegoKey")) || [];
 
 
+let btnDatosPrueba = document.getElementById('btnDatosPrueba');
 
 
-/*campoCodigo.addEventListener("blur", () => {
-  campoRequerido(campoCodigo);
-});*/
+btnDatosPrueba.addEventListener('click',cargarDatosPrueba);
 
 campoPublicado.addEventListener("click", ()=> {
-  console.log(valorCampoPublicado, 'antes');
+  ;
   if (valorCampoPublicado === "No Publicado") {
     valorCampoPublicado = "Publicado";
-    console.log('entre al if', valorCampoPublicado);
   }else {
     valorCampoPublicado = "No Publicado";
-    console.log('entre al else',valorCampoPublicado);
   }
 })
 campoJuego.addEventListener("blur", () => {
@@ -58,6 +57,16 @@ formularioJuego.addEventListener("submit", guardarjuego);
 
 // emieza la logica CRUD
 
+let btnDestacada = document.getElementById('destacada')
+
+btnDestacada.addEventListener('click', function () {
+  if (btnDestacada.classList.contains('btn-warning')) {
+    btnDestacada.classList.remove('btn-warning')
+    btnDestacada.classList.add('btn-primary')
+  }else{
+    btnDestacada.classList.remove('btn-primary')
+    btnDestacada.classList.add('btn-warning')}
+})
 function guardarjuego(e) {
   //prevenir el actualizar del submit
   e.preventDefault();
@@ -73,27 +82,25 @@ function guardarjuego(e) {
   ) {
  
     if (juegoExistente === false) {
-      //crear juego
       crearJuego();
     } else {
-      //modificar juego
      modificarJuego();
     }
   }
 }
 
 function crearJuego(){
-  // codigo unico
 
   let codigoUnico = Math.floor(Math.random()*100);
-  // crear objeto Juego 
   let juegoNuevo = new Juego(
     codigoUnico, 
     campoJuego.value,
     campoCategoria.value,  
     campoDescripcion.value, 
     campoURL.value,
-    valorCampoPublicado
+    valorCampoPublicado,
+    campoImgpri.value,
+    campoImgsec.value
     );
   
     listaJuegos.push(juegoNuevo);
@@ -120,12 +127,10 @@ function limpiarFormulario() {
   campoCategoria.className = "form-control";
   campoURL.className = "form-control";
   valorCampoPublicado = "No Publicado";
-
   juegoExistente = false;
 }
 
 function guardarLocalSorage() {
-  console.log(listaJuegos);
   localStorage.setItem("arrayJuegoKey", JSON.stringify(listaJuegos));
 }
 function crearFila(juego){
@@ -137,10 +142,12 @@ function crearFila(juego){
   <td>${juego.descripcion}</td>
   <td>${juego.url}</td>
   <td>${juego.publicado}</td>
+  <td>${juego.imgPri}</td>
+  <td>${juego.imgSec}</td>
   <td>
-    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="preEdicionJuego('${juego.codigo}')"><i class="bi bi-pencil-square"></i></button>
-    <button type="button" class="btn btn-danger" onclick="borrarJuego('${juego.codigo}')"><i class="bi bi-trash3"></i></button>
-    <button type="button" class="btn btn-primary" onclick="borrarJuego('${juego.codigo}')"><i class="bi bi-star"></i></i></button>
+  <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="preEdicionJuego('${juego.codigo}')"><i class="bi bi-pencil-square"></i></button>
+  <button type="button" class="btn btn-danger" onclick="borrarJuego('${juego.codigo}')"><i class="bi bi-trash3"></i></button>
+  <button type="button" class="btn btn-primary" id="destacada"><i class="bi bi-star"></i></i></button>
   </td>
 </tr>`
 
@@ -154,7 +161,6 @@ function cargaInicial(){
 
 window.preEdicionJuego = function (codigo) {
 
-  //buscar el producto en el array
   let juegoBuscado = listaJuegos.find((itemJuego) => {
     return itemJuego.codigo === parseInt(codigo);
   });
@@ -164,7 +170,10 @@ window.preEdicionJuego = function (codigo) {
   campoDescripcion.value = juegoBuscado.descripcion;
   campoCategoria.value = juegoBuscado.categoria;
   campoURL.value = juegoBuscado.url;
-
+  campoPublicado.value = valorCampoPublicado;
+  campoImgpri.value = juegoBuscado.imgPri;
+  campoImgsec.value = juegoBuscado.imgSec;
+  
   //cambiar la variable bandera productoExistente
   juegoExistente = true;
 };
@@ -187,25 +196,25 @@ function modificarJuego() {
         return itemJuego.codigo === parseInt(campoCodigo.value);
       });
 
-    
       //modificar los valores dentro del elemento del array de Juegos
       listaJuegos[indiceJuego].juego = campoJuego.value;
       listaJuegos[indiceJuego].descripcion = campoDescripcion.value;
       listaJuegos[indiceJuego].categoria = campoCategoria.value;
       listaJuegos[indiceJuego].url = campoURL.value;
+      listaJuegos[indiceJuego].publicado = valorCampoPublicado;
+      listaJuegos[indiceJuego].imgPri = campoImgpri.value;
+      listaJuegos[indiceJuego].imgSec = campoImgsec.value;
 
-      //actualizar el localStorage
+
       guardarLocalSorage();
       //actualizar la tabla
       borrarTabla();
       cargaInicial();
-      //mostrar cartel al usuario
       Swal.fire(
         "Juego modificado!",
         "Su Juego fue modificado correctamente",
         "success"
       );
-      //limpiar el formulario
       limpiarFormulario();
     }
   });
@@ -237,8 +246,6 @@ window.borrarJuego = function (codigo) {
       //actualizar la tabla
       borrarTabla();
       cargaInicial();
-
-      //mostrar cartel al usuario
       Swal.fire(
         "Juego eliminado!",
         "Su juego fue eliminado correctamente",
@@ -247,5 +254,33 @@ window.borrarJuego = function (codigo) {
     }
   });
 };
+
+function cargarDatosPrueba(){
+  const datos = [
+    {
+      codigo: Math.floor(Math.random()*100),
+      juego: "Call of Duty: Modern Warfare 2 2022",
+      categoria: "Acción",
+      descripcion:
+        "En Call of Duty®: Modern Warfare® II, los jugadores se verán inmersos en un conflicto a escala global sin precedentes que incluye el regreso de Operadores icónicos de la fuerza operativa 141.",
+      url: "https://www.youtube.com/watch?v=VWqqQUhzSDg&ab_channel=CallofDutyEspa%C3%B1ol",
+      publicado :"Publicado",
+      imgPri :" ",
+      imgSec :" ",
+    },
+  ]
+
+ if (!localStorage.getItem('arrayProductoKey')) {
+   // quiero agregar los datos de productos
+   console.log('cargar datos prueba');
+   localStorage.setItem('arrayProductoKey', JSON.stringify(datos));
+   listaJuegos = datos;
+   //mostar en la tabla
+   listaJuegos.forEach(itemJuego => {
+     crearFila(itemJuego);
+   })
+ }
+};
+
 
 

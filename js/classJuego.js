@@ -1,11 +1,13 @@
 export class Juego {
-  constructor(varCodigo, varJuego, varCategoria, varDescripcion, varUrl, varPublicado) {
+  constructor(varCodigo, varJuego, varCategoria, varDescripcion, varUrl, varPublicado, varImagpri, varImgsec) {
     this.codigo = varCodigo;
     this.juego = varJuego;
     this.categoria = varCategoria;
     this.descripcion = varDescripcion;
     this.url = varUrl;
-    this.publicado = varPublicado
+    this.publicado = varPublicado;
+    this.imgPri = varImagpri;
+    this.imgSec = varImgsec;
   }
 
   //getters y setters

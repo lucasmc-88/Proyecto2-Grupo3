@@ -1,8 +1,6 @@
 import {
   campoRequerido,
-  validarNumero,
-  validarURL,
-  validacionGeneral,
+
 } from "./validacionJuego.js";
 
 import { Usuario } from "./classJuego.js";
@@ -18,10 +16,6 @@ let usuarioExistente = false; // variable bandera
 
 let listaUsuarios = JSON.parse(localStorage.getItem("arrayUsuarioKey")) || [];
 
-/*campoCodigo.addEventListener("blur", () => {
-  campoRequerido(campoCodigo);
-});*/
-
 campoUsuario.addEventListener("blur", () => {
   campoRequerido(campoUsuario);
 });
@@ -34,10 +28,9 @@ campoAdmin.addEventListener("blur", () => {
   campoRequerido(campoAdmin);
 });
 
-campoEstado.addEventListener("blur", () => {
-  console.log("desde url");
+/*campoEstado.addEventListener("blur", () => {
   validarURL(campoEstado);
-});
+});*/
 
 formularioUsuario.addEventListener("submit", guardarUsuario);
 
@@ -50,16 +43,8 @@ cargaInicial();
 function guardarUsuario(e) {
   //prevenir el actualizar del submit
   e.preventDefault();
-  //verificar que todos los datos sean validos
-  if (
-    validacionGeneral(
-      //campoCodigo,
-      campoUsuario,
-      campoPass,
-      campoAdmin,
-      campoEstado
-    )
-  ) {
+
+ 
     console.log("los datos fueron enviados correctamente");
     if (usuarioExistente === false) {
       //crear Usuario
@@ -69,7 +54,7 @@ function guardarUsuario(e) {
       modificarUsuario();
     }
   }
-}
+
 
 function crearUsuario() {
   // codigo unico
@@ -80,7 +65,6 @@ function crearUsuario() {
     campoUsuario.value,
     campoPass.value,
     campoAdmin.value,
-    campoEstado.value
   );
   console.log(usuarioNuevo);
   listaUsuarios.push(usuarioNuevo);
@@ -103,7 +87,6 @@ function limpiarFormulario() {
   campoUsuario.className = "form-control";
   campoPass.className = "form-control";
   campoAdmin.className = "form-control";
-  campoEstado.className = "form-control";
 
   usuarioExistente = false;
 }
@@ -119,9 +102,8 @@ function crearFila(Usuario) {
   <td>${Usuario.usuario}</td>
   <td>${Usuario.pass}</td>
   <td>${Usuario.admin}</td>
-  <td>${Usuario.estado}</td>
   <td>
-    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="preEdicionUsuario('${Usuario.codigo}')"><i class="bi bi-pencil-square"></i></button>
+    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="preEdicionUsuario('${Usuario.codigo}')"><i class="bi bi-pencil-square"></i></button>
     <button type="button" class="btn btn-danger" onclick="borrarUsuario('${Usuario.codigo}')"><i class="bi bi-trash3"></i></button>
   </td>
 </tr>`;
@@ -251,3 +233,6 @@ if (campoLogUs == "lucas" && campoLogPass == 123) {
 
     //let campoLosADmin = document.getElementById("admin");
 }
+
+
+
